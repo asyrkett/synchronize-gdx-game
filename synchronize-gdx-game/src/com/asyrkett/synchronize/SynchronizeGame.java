@@ -1,11 +1,14 @@
 package com.asyrkett.synchronize;
 
+import com.asyrkett.synchronize.screens.SplashScreen;
+
 import com.badlogic.gdx.Game;
 
 public class SynchronizeGame extends Game {
 	
 	@Override
-	public void create() {		
+	public void create() {
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override

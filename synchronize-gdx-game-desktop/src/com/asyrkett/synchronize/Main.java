@@ -7,9 +7,9 @@ public class Main {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Synchronize";
-		cfg.width = 800;
-		cfg.height = 600;
-		
+		cfg.useGL30 = false;
+		cfg.width = 1000;
+		cfg.height = 750;
 		new LwjglApplication(new SynchronizeGame(), cfg);
 	}
 }

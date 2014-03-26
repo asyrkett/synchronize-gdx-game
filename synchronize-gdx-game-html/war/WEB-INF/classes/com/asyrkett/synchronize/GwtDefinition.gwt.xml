@@ -3,6 +3,7 @@
     <entry-point class="com.asyrkett.synchronize.client.GwtLauncher"/>
     <set-configuration-property name="gdx.assetpath" value="../synchronize-gdx-game-android/assets"/>
     <inherits name="SynchronizeGame"/>
+    <inherits name="aurelienribon.bodyeditorloader"/>
     <inherits name="aurelienribon.tweenengine"/>
     <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt"/>
 </module>

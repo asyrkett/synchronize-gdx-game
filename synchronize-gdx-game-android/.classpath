@@ -8,6 +8,7 @@
     <classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
     <classpathentry kind="output" path="bin/classes"/>
     <classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
+    <classpathentry exported="true" kind="lib" path="/synchronize-gdx-game/libs/bodyeditor-loader.jar" sourcepath="/synchronize-gdx-game/libs/bodyeditor-loader-sources.jar"/>
     <classpathentry exported="true" kind="lib" path="/synchronize-gdx-game/libs/gdx.jar" sourcepath="/synchronize-gdx-game/libs/gdx-sources.jar"/>
     <classpathentry exported="true" kind="lib" path="/synchronize-gdx-game/libs/tween-engine-api.jar" sourcepath="/synchronize-gdx-game/libs/tween-engine-api-sources.jar"/>
 </classpath>

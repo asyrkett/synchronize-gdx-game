@@ -1,6 +1,10 @@
 package com.asyrkett.synchronize.screens;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
+
 import com.asyrkett.synchronize.SynchronizeGame;
+import com.asyrkett.synchronize.tweens.SpriteAccessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,6 +20,7 @@ public class SplashScreen implements Screen {
 	private Texture titleTexture;
 	private Sprite backgroundSprite;
 	private Sprite titleSprite;
+	private TweenManager tweenManager;
 	
 	public SplashScreen(SynchronizeGame game) {
 		this.game = game;
@@ -24,11 +29,13 @@ public class SplashScreen implements Screen {
 	
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
+		tweenManager.update(delta);
+		
 		batch.begin();
-		backgroundSprite.draw(batch);
+		//backgroundSprite.draw(batch);
 		titleSprite.draw(batch);
 		batch.end();
 	}
@@ -42,6 +49,9 @@ public class SplashScreen implements Screen {
 	public void show() {
 		batch = new SpriteBatch();
 		
+		tweenManager = new TweenManager();
+		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
+		
 		backgroundTexture = new Texture(Gdx.files.internal("data/background.png"));
 		titleTexture = new Texture(Gdx.files.internal("data/title.png"));
 		//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -52,6 +62,10 @@ public class SplashScreen implements Screen {
 		titleSprite = new Sprite(titleTexture);
 		titleSprite.setPosition((Gdx.graphics.getWidth() - titleSprite.getWidth()) / 2, 
 				(Gdx.graphics.getHeight() - titleSprite.getHeight()) / 2);
+		
+		Tween.set(titleSprite, SpriteAccessor.ALPHA).target(0).start(tweenManager);
+		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(1).start(tweenManager);
+		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(0).delay(2).start(tweenManager);
 	}
 
 	@Override

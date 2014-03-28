@@ -5,9 +5,12 @@ import com.badlogic.gdx.Game;
 
 public class SynchronizeGame extends Game {
 	
+	public static final String TITLE = "Synchronize";
+	public static final String VERSION = "0.0.0.0.1";
+	
 	@Override
 	public void create() {
-		setScreen(new SplashScreen(this));
+		setScreen(new SplashScreen());
 	}
 
 	@Override

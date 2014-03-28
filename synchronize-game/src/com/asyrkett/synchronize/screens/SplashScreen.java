@@ -1,10 +1,12 @@
 package com.asyrkett.synchronize.screens;
 
+import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenManager;
 
-import com.asyrkett.synchronize.SynchronizeGame;
 import com.asyrkett.synchronize.tweens.SpriteAccessor;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,18 +16,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class SplashScreen implements Screen {
 
-	private SynchronizeGame game;
 	private SpriteBatch batch;
 	private Texture backgroundTexture;
 	private Texture titleTexture;
 	private Sprite backgroundSprite;
 	private Sprite titleSprite;
 	private TweenManager tweenManager;
-	
-	public SplashScreen(SynchronizeGame game) {
-		this.game = game;
-	}
-	
 	
 	@Override
 	public void render(float delta) {
@@ -63,9 +59,17 @@ public class SplashScreen implements Screen {
 		titleSprite.setPosition((Gdx.graphics.getWidth() - titleSprite.getWidth()) / 2, 
 				(Gdx.graphics.getHeight() - titleSprite.getHeight()) / 2);
 		
+		//fade title in and out
 		Tween.set(titleSprite, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(1).start(tweenManager);
-		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(0).delay(2).start(tweenManager);
+		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 4).setCallback(new TweenCallback() {
+
+			//after animation sequence, go to main menu screen
+			@Override
+			public void onEvent(int type, BaseTween<?> source) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new MenuScreen());
+			}
+			
+		}).start(tweenManager);
 	}
 
 	@Override

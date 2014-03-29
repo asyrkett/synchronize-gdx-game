@@ -61,7 +61,7 @@ public class SplashScreen implements Screen {
 		
 		//fade title in and out
 		Tween.set(titleSprite, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 4).setCallback(new TweenCallback() {
+		Tween.to(titleSprite, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 2).setCallback(new TweenCallback() {
 
 			//after animation sequence, go to main menu screen
 			@Override

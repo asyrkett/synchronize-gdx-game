@@ -3,9 +3,9 @@ button.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-orange_button
+button.up
   rotate: false
-  xy: 0, 0
+  xy: 0, 1
   size: 128, 64
   split: 22, 22, 6, 7
   orig: 128, 64

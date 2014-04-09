@@ -17,9 +17,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class SplashScreen implements Screen {
 
 	private SpriteBatch batch;
-	private Texture backgroundTexture;
 	private Texture titleTexture;
-	private Sprite backgroundSprite;
 	private Sprite titleSprite;
 	private TweenManager tweenManager;
 	
@@ -48,12 +46,8 @@ public class SplashScreen implements Screen {
 		tweenManager = new TweenManager();
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 		
-		backgroundTexture = new Texture(Gdx.files.internal("data/background.png"));
 		titleTexture = new Texture(Gdx.files.internal("data/title.png"));
 		//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		
-		backgroundSprite = new Sprite(backgroundTexture);
-		backgroundSprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		titleSprite = new Sprite(titleTexture);
 		titleSprite.setPosition((Gdx.graphics.getWidth() - titleSprite.getWidth()) / 2, 
@@ -90,7 +84,6 @@ public class SplashScreen implements Screen {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		backgroundTexture.dispose();
 		titleTexture.dispose();
 	}
 
